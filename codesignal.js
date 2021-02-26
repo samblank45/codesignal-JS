@@ -1,4 +1,20 @@
 
+function shapeArea(n) {
+  let sides = 0
+  let poly = 1
+  for (let i = 1; i < n; i++) {
+    if (n === 1) {
+      return poly
+    } else if (n > 1) {
+      sides += 4
+      poly = poly + sides
+    }
+  }
+  return poly
+}
+
+
+
 function makeArrayConsecutive2(statues) {
   // we want to sort the array from lowest to highest
   let sortedArray = statues.sort(function(a,b){return a - b})
