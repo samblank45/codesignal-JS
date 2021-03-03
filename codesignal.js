@@ -94,3 +94,25 @@ console.log(matrixElementsSum([[1, 1, 0, 0],
 //rooms that are 0 are huanted and rooms that are beneath 0 are haunted
 //input: matrix (arrays within an array) output: sum total 
 
+//Problem 9
+// Given an array of strings, return another array containing all of its longest strings.
+
+function allLongestStrings(inputArray) {
+  // create placeholder variable for longestString
+  let longestString = inputArray[0]
+  // we loop through the array and find the largest string 
+  for ( let i = 1; i < inputArray.length; i ++) {
+      // we compare each item to the placeholder and replace said placeholder with item if its larger
+    if (longestString.length < inputArray[i].length) {
+      longestString = inputArray[i]
+    }
+  }
+  // we then filter through inputArray and return all strings whose length is equal to placeholder variable length
+  let answer = inputArray.filter(string => {
+    return string.length === longestString.length
+  })
+  return answer
+  //
+}
+
+console.log(allLongestStrings(['aaa','aa','bbb','b','bbb'])) // ['aaa','bbb','bbb']
