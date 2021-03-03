@@ -38,25 +38,59 @@
 // console.log(makeArrayConsecutive2([1,4,15])) // 2  missing 2,4
 
 //problem 7
-function almostIncreasingSequence(sequence) {
-  let count = 0;
+// function almostIncreasingSequence(sequence) {
+//   let count = 0;
 
-  for (let i = 0; i < sequence.length; i++) {
-    if (sequence[i] <= sequence[i-1]) {
-      count++;
-      if (sequence[i] <= sequence[i-2] && sequence[i+1] <= sequence[i-1]) {
-        console.log('--------')
-        console.log(sequence[i], '<=', sequence[i - 2], 'current index:', i)
-        console.log(sequence[i + 1], '<=', sequence[i - 1])
-        count++;
+//   for (let i = 0; i < sequence.length; i++) {
+//     if (sequence[i] <= sequence[i-1]) {
+//       count++;
+//       if (sequence[i] <= sequence[i-2] && sequence[i+1] <= sequence[i-1]) {
+//         console.log('--------')
+//         console.log(sequence[i], '<=', sequence[i - 2], 'current index:', i)
+//         console.log(sequence[i + 1], '<=', sequence[i - 1])
+//         count++;
+//       }
+//     } 
+//   } 
+//   return count <= 1;
+// }
+
+// console.log(almostIncreasingSequence([1, 2, 3, 5])) //true
+// console.log(almostIncreasingSequence([1, 2, 5, 3, 5, 3, 5, 1])) //false
+// console.log(almostIncreasingSequence([1, 2, 3, 1, 2, 3])) //false
+// console.log(almostIncreasingSequence([10,1,2,3,4,5])) //true
+// console.log(almostIncreasingSequence([1, 2, 3, 4, 5, 3, 5, 6])) //false
+
+
+
+// Problem 8
+//Given matrix, a rectangular matrix of integers, where each value represents the cost of the room, your task is to return the total sum of all rooms that are suitable for the CodeBots (ie: add up all the values that don't appear below a 0).
+
+function matrixElementsSum(matrix) {
+  let sum = 0
+  let ghostColumns = new Set()
+
+  matrix.forEach(row => {
+    row.forEach((value, i) => {
+      console.log(value)
+      console.log(i)
+      if (value === 0 ) {
+        ghostColumns.add(i)
+      } else if (!ghostColumns.has(i)) {
+        sum += value
       }
-    } 
-  } 
-  return count <= 1;
+    })
+  })
+  return sum
 }
 
-console.log(almostIncreasingSequence([1, 2, 3, 5])) //true
-console.log(almostIncreasingSequence([1, 2, 5, 3, 5, 3, 5, 1])) //false
-console.log(almostIncreasingSequence([1, 2, 3, 1, 2, 3])) //false
-console.log(almostIncreasingSequence([10,1,2,3,4,5])) //true
-console.log(almostIncreasingSequence([1, 2, 3, 4, 5, 3, 5, 6])) //false
+console.log(matrixElementsSum([[0, 1, 1, 0], 
+                              [0, 5, 0, 2], 
+                              [2, 0, 3, 3]]))  //1 + 1 + 2 + 5   4
+
+console.log(matrixElementsSum([[1, 1, 0, 0], 
+                              [0, 5, 0, 0], 
+                              [2, 0, 3, 3]]))  // 7   1 + 1 + 5   4
+//rooms that are 0 are huanted and rooms that are beneath 0 are haunted
+//input: matrix (arrays within an array) output: sum total 
+
