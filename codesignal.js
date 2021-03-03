@@ -66,53 +66,77 @@
 // Problem 8
 //Given matrix, a rectangular matrix of integers, where each value represents the cost of the room, your task is to return the total sum of all rooms that are suitable for the CodeBots (ie: add up all the values that don't appear below a 0).
 
-function matrixElementsSum(matrix) {
-  let sum = 0
-  let ghostColumns = new Set()
+// function matrixElementsSum(matrix) {
+//   let sum = 0
+//   let ghostColumns = new Set()
 
-  matrix.forEach(row => {
-    row.forEach((value, i) => {
-      console.log(value)
-      console.log(i)
-      if (value === 0 ) {
-        ghostColumns.add(i)
-      } else if (!ghostColumns.has(i)) {
-        sum += value
-      }
-    })
-  })
-  return sum
-}
+//   matrix.forEach(row => {
+//     row.forEach((value, i) => {
+//       console.log(value)
+//       console.log(i)
+//       if (value === 0 ) {
+//         ghostColumns.add(i)
+//       } else if (!ghostColumns.has(i)) {
+//         sum += value
+//       }
+//     })
+//   })
+//   return sum
+// }
 
-console.log(matrixElementsSum([[0, 1, 1, 0], 
-                              [0, 5, 0, 2], 
-                              [2, 0, 3, 3]]))  //1 + 1 + 2 + 5   4
+// console.log(matrixElementsSum([[0, 1, 1, 0], 
+//                               [0, 5, 0, 2], 
+//                               [2, 0, 3, 3]]))  //1 + 1 + 2 + 5   4
 
-console.log(matrixElementsSum([[1, 1, 0, 0], 
-                              [0, 5, 0, 0], 
-                              [2, 0, 3, 3]]))  // 7   1 + 1 + 5   4
+// console.log(matrixElementsSum([[1, 1, 0, 0], 
+//                               [0, 5, 0, 0], 
+//                               [2, 0, 3, 3]]))  // 7   1 + 1 + 5   4
 //rooms that are 0 are huanted and rooms that are beneath 0 are haunted
 //input: matrix (arrays within an array) output: sum total 
 
 //Problem 9
 // Given an array of strings, return another array containing all of its longest strings.
 
-function allLongestStrings(inputArray) {
-  // create placeholder variable for longestString
-  let longestString = inputArray[0]
-  // we loop through the array and find the largest string 
-  for ( let i = 1; i < inputArray.length; i ++) {
-      // we compare each item to the placeholder and replace said placeholder with item if its larger
-    if (longestString.length < inputArray[i].length) {
-      longestString = inputArray[i]
-    }
-  }
-  // we then filter through inputArray and return all strings whose length is equal to placeholder variable length
-  let answer = inputArray.filter(string => {
-    return string.length === longestString.length
-  })
-  return answer
-  //
-}
+// function allLongestStrings(inputArray) {
+//   // create placeholder variable for longestString
+//   let longestString = inputArray[0]
+//   // we loop through the array and find the largest string 
+//   for ( let i = 1; i < inputArray.length; i ++) {
+//       // we compare each item to the placeholder and replace said placeholder with item if its larger
+//     if (longestString.length < inputArray[i].length) {
+//       longestString = inputArray[i]
+//     }
+//   }
+//   // we then filter through inputArray and return all strings whose length is equal to placeholder variable length
+//   let answer = inputArray.filter(string => {
+//     return string.length === longestString.length
+//   })
+//   return answer
+//   //
+// }
 
-console.log(allLongestStrings(['aaa','aa','bbb','b','bbb'])) // ['aaa','bbb','bbb']
+// console.log(allLongestStrings(['aaa','aa','bbb','b','bbb'])) // ['aaa','bbb','bbb']
+
+
+// problem 10
+// Given two strings, find the number of common characters between them.
+
+function commonCharacterCount(s1, s2) {
+  let stringArr1 = s1.split('')
+  let stringArr2 = s2.split('')
+  let counter = 0
+  // loop through s1 and check if s2 includes s1[i]
+  //if s2 does includes s1[i], remove that letter from s2
+
+  stringArr1.forEach(string => {
+    if (stringArr2.includes(string)) {
+      counter++
+      stringArr2.splice(stringArr2.indexOf(string), 1)
+    }
+  })
+  return counter
+  // if s1[i] == s2[i] counter++
+  }
+
+console.log(commonCharacterCount('abca','xyzbac'))  // 3   2 common characters
+console.log(commonCharacterCount('zzzz','zzzzzzzz'))  // 1  
