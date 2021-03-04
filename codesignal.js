@@ -143,3 +143,27 @@ console.log(commonCharacterCount('zzzz','zzzzzzzz'))  // 1
 //problem 11
 // Ticket numbers usually consist of an even number of digits. A ticket number is considered lucky if the sum of the first half of the digits is equal to the sum of the second half. Given a ticket number n, determine if it's lucky or not.
 
+function isLucky(n) {
+  n = n.toString()
+  n = n.split('')
+  console.log(n)
+  // we create two placeholders variables for both halves of the digits
+  let firstHalf = 0
+  let secondHalf = 0
+  // we create a variable for division
+  // we divide n / 2 and use that to seperate the two halves using for loops
+  for (let i = 0; i < (n.length / 2); i++) {
+    console.log(n[i], 'first half')
+    firstHalf += parseInt(n[i])
+  }
+  for (let i = (n.length / 2); i < n.length; i++) {
+    console.log(n[i], 'second half')
+    secondHalf += parseInt(n[i])
+  }
+  return firstHalf === secondHalf
+  // we add up the total on both halves and check if theyre equal
+}
+console.log('=====')
+console.log(isLucky(123123)) // true  1 + 2 + 3 = 6    1 + 2 + 3 = 6
+console.log(isLucky(1122)) // false  1 + 1 = 2  2 + 2 = 4
+
