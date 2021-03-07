@@ -167,3 +167,38 @@ console.log('=====')
 console.log(isLucky(123123)) // true  1 + 2 + 3 = 6    1 + 2 + 3 = 6
 console.log(isLucky(1122)) // false  1 + 1 = 2  2 + 2 = 4
 
+
+//problem 12
+// Some people are standing in a row in a park. There are trees between them which cannot be moved. Your task is to rearrange the people by their heights in a non-descending order without moving the trees. People can be very tall!
+
+
+function sortByHeight(people) {
+  // loop through the array and sort it in ascending order
+  let newPeople = []
+  let indexTrees = []
+  // filter through people array and determine the index position of each -1 and put that inside a new array
+  people.filter((height) => {
+    if (height !== -1 ) {
+      newPeople.push(height)
+    }
+  })
+
+  people.filter((height, index) => {
+    if (height === -1 ) {
+      indexTrees.push(index)
+    }
+  })
+
+  newPeople.sort(function(a,b) {return a - b})
+
+  indexTrees.forEach((treeIndex) => {
+    newPeople.splice(treeIndex, 0, -1)
+  })
+  return newPeople
+  // remove -1 and and sort the array
+  
+  // insert -1 into the sorted array in their respective positions from out intial filter
+}
+
+console.log(sortByHeight([-1,150,180,170,-1,-1,160])) // [-1, 150, 160, 170, -1, -1, 180]
+
