@@ -202,3 +202,43 @@ function sortByHeight(people) {
 
 console.log(sortByHeight([-1,150,180,170,-1,-1,160])) // [-1, 150, 160, 170, -1, -1, 180]
 
+
+// problem 13
+// Write a function that reverses characters in (possibly nested) parentheses in the input string.
+
+function reverseInParentheses(inputString) {
+  let parenthesesIndex = []
+  let reverseWord = ''
+  let word = ''
+  let ArrString = inputString.split('')
+  let slicedArr = ''
+  let i = 0
+  //iterate through the string and look for parentheses
+  ArrString.filter((letter, index) => {
+    if ( letter === '(') {
+      parenthesesIndex.push(index)
+    }
+    if ( letter === ')') {
+      parenthesesIndex.push(index)
+    }
+  })
+
+  slicedArr = ArrString.slice(parenthesesIndex[0] + 1, parenthesesIndex[1])
+  word = slicedArr.join('')
+  slicedArr.reverse()
+  reverseWord = slicedArr.join('')
+  inputString.replace(word, reverseWord)
+  for (let i = 0; i < inputString.length; i++) {
+    if (inputString[i] === '(' || inputString[i] === ')') {
+      
+    }
+  }
+
+
+  // if parentheses, return whats inside
+}
+
+console.log(reverseInParentheses('(bar)')) // rab
+console.log(reverseInParentheses('foo(bar)')) // foorab
+console.log(reverseInParentheses('foo(bar(baz))blim')) // foozabrabblim
+// (baz)becomes zab  and then (barzab) becomes bazrab 
