@@ -273,3 +273,26 @@ function alternatingSums(a) {
 }
 
 console.log(alternatingSums([1,0,3,4])) // [4,4]
+
+//Problem Add Border
+// Given a rectangular matrix of characters, add a border of asterisks(*) to it.
+
+function addBorder(picture) {
+  let result = []
+  let lineLength = picture.length + 2
+  let topLine = "*".repeat(lineLength)
+  let bottomLine = "*".repeat(lineLength)
+  result.push(topLine)
+  for (let i = 0; i < picture.length; i++) {
+    let newLine = "*" + picture[i] + "*"
+    result.push(newLine)
+  }
+  result.push(bottomLine)
+  return result
+
+}
+
+console.log(addBorder(['abc','abc'])) // ['*****',
+                                      //  '*abc*',
+                                      //  '*abc*'
+                                      //  '*****']
