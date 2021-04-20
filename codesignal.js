@@ -327,3 +327,35 @@ for ( let i = 1; i < 100; i++) {
   i % 3 === 0 && i % 5 === 0 ? console.log(i, "fizzbuzz") : i % 5 === 0 ? console.log(i, "buzz") : i % 3 === 0 ? console.log(i, "fizz") : null
 }
 // no expected input, expected output is a string 
+
+console.log('-----')
+
+let foo = 10 + '20'
+
+console.log( 0.1 + 0.2 == 0.30000000000000004)
+console.log( 1 + 2 === 3)
+
+function add(a) {
+  return function(b) {
+    return a + b
+  }
+}
+
+// palindrome
+
+function palindrome(word) {
+
+  // using methods
+  return word.split("").reverse().join("") === word ? "its a palindrome" : "its not a palindrome"
+
+  // using a decrementing for loop
+  // let secondWord = ''
+  // for ( let i = word.length -1; i >= 0; i--) {
+  //   secondWord += word[i]
+  // }
+  // return secondWord === word ? "its a palindrome" : "its not a palindrome"
+}
+
+// input is a string and output is a string
+console.log(palindrome("racecar")) // true
+console.log(palindrome("sam")) // false
