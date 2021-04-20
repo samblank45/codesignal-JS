@@ -296,3 +296,26 @@ console.log(addBorder(['abc','abc'])) // ['*****',
                                       //  '*abc*',
                                       //  '*abc*'
                                       //  '*****']
+
+
+
+
+
+console.log('------')
+
+// create a function that duplicates the array of numbers
+
+function duplicate(numbers) {
+  // we can simply use the concat method to concat the same array twice.
+  // return numbers.concat(numbers);
+  let SecondNumbers = []
+  // without using concat method
+  for ( let i = 0; i < 2; i++) {
+    for ( let  j = 0; j < numbers.length; j++) {
+      SecondNumbers.push(numbers[j])
+    }
+  }
+ return SecondNumbers
+}
+
+console.log(duplicate([1,2,3,4,5])) // [1,2,3,4,5,1,2,3,4,5]
